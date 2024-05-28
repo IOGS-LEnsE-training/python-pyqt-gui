@@ -3,15 +3,15 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to Base LEnsE GUI's documentation !
+Welcome to PyQt GUI's documentation !
 ===========================================
 
-.. caution::
+.. warning::
    This application and its documentation website are still works in progress
 
-**Base LEnsE GUI** is a complete tutorial to develop a **graphical user interface** based on **PyQt6** in Python.
+**Python PyQt GUI** is a complete tutorial to develop a **graphical user interface** based on **PyQt6** in Python.
 
-The GitHub repository of this project : `base_LEnsE_GUI <https://github.com/IOGS-LEnsE/base_LEnsE_GUI>`_
+The GitHub repository of this project : `python-pyqt-gui <https://iogs-lense-training.github.io/python-pyqt-gui/index.html>`_
 
 |
 

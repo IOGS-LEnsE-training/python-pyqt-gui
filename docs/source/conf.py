@@ -17,8 +17,8 @@ sys.path.insert(0, os.path.abspath('../../interface'))
 
 # -- Project information -----------------------------------------------------
 
-project = 'Base LEnsE GUI - LEnsE / IOGS'
-copyright = '2023, Julien Villemejane'
+project = 'PyQt6 GUI - LEnsE / IOGS'
+copyright = '2024, Julien Villemejane'
 author = 'Julien Villemejane'
 release = '0.1'
 
@@ -64,10 +64,11 @@ html_theme = 'sphinx_rtd_theme'
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ["_static"]
 
-html_logo = "_static/logo_lense.png"
+html_logo = "_static/assets/logo-training_git.png"
 
 html_css_files = [
-    'css/lense.css',
+    'css/lense-training.css',
+    'css/links.css',		'https://iogs-lense.github.io/lense.tech/assets/css/fontawesome/css/all.css'
 ]
 
 napoleon_google_docstring = False
