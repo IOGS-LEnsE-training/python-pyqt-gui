@@ -106,6 +106,24 @@
              
   <section id="simplewidget-example">
 <h1>SimpleWidget Example<a class="headerlink" href="#simplewidget-example" title="Link to this heading"></a></h1>
+<p>This section presents a simple widget that can be included in a largest window.</p>
+<img alt="SimpleWidget view" class="align-center" src="../../_images/simplewidget_example.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>The complete file <code class="file docutils literal notranslate"><span class="pre">SimpleWidget.py</span></code> of this example is in the <code class="file docutils literal notranslate"><span class="pre">interface/elements/</span></code> directory.</p>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<section id="simplewidget-class">
+<h2>SimpleWidget class<a class="headerlink" href="#simplewidget-class" title="Link to this heading"></a></h2>
+<p>This class inherites from the QWidget class, a container of Qt application. In the initialization function of this new class, the constructor (__init__ function) of the mother class is called (mother class is the QWidget class).</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span>      <span class="k">class</span> <span class="nc">SimpleWidget</span><span class="p">(</span><span class="n">QWidget</span><span class="p">):</span>
+<span class="linenos">2</span>              <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">background_color</span><span class="o">=</span><span class="s1">&#39;#0A3250&#39;</span><span class="p">,</span> <span class="n">text_color</span><span class="o">=</span><span class="s1">&#39;#FFFFFF&#39;</span><span class="p">):</span>
+<span class="linenos">3</span>                      <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
 </section>
 
 
