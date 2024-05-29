@@ -1,5 +1,5 @@
 GUI1 Example
-============
+############
 
 In this first example of GUI, we will learn the basics of the development of a graphical interface, based on PyQt6.
 
@@ -17,7 +17,7 @@ The complete file :file:`Gui01.py` of this example is in the :file:`interface/` 
 |
 
 MainWindow and main function
-----------------------------
+****************************
 
 As mentionned in the :ref:`pyqt6-basics-page` page, graphical applications with Qt are based on containers and contents to include as graphical objects.
 
@@ -26,7 +26,7 @@ The main container of a window application is a **QMainWindow** object from Qt.
 *It could also be a* :code:`QWidget` *object, but this case will not be processed in this tutorial.*
 
 Creation of a main window
-~~~~~~~~~~~~~~~~~~~~~~~~~
+=========================
 
 To create the main block of your final application, you have to develop a class inherited from the **QMainWindow** object of the *QtWidgets* sub-library of the **PyQt6** API.
 
@@ -47,7 +47,7 @@ This example code does not produce a windowed application because no :code:`Main
 
 
 Creation of the main function
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=============================
 
 To vizualize the result of the previous code, the main function has to instantiate a :code:`MainWindow` object and to execute the application, via the **QApplication** class.
 
@@ -72,7 +72,7 @@ The execution of this code give the previous showed in the next figure.
    
 
 Title, icon and size of the application
----------------------------------------
+***************************************
 
 Applications often have title and mostly icon that appear in the title bar (the top bar of the application window).
 
@@ -103,7 +103,7 @@ You can also specify the size and the position of your windowed application by u
       self.setGeometry(50, 50, 1000, 700)
 	  
 About oriented object programming
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=================================
 
 In the previous example, all the methods used to improve the graphical interface (set a title or an icon...) refered to an object called **self**.
 
@@ -115,14 +115,14 @@ All the internal methods of a class can access to this specific attribute by usi
 
 
 First graphical container and object
-------------------------------------
+************************************
 
 The **QMainWindow** object is a container that can receive other graphical containers or objects. 
 
 Especially, it's possible to add a graphical container (a **QWidget** object for example) in its central area.
 
 Main window central container
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=============================
 
 In the :code:`__init__` function of the **MainWindow** class, you can create a **QWidget** object, called *main_widget*. This widget is then set as the central widget of the **QMainWindow** object.
 
@@ -146,7 +146,7 @@ You can change the background by adding this line in the :code:`__init__` functi
 
 
 Layout of the window
-~~~~~~~~~~~~~~~~~~~~
+====================
 
 Before adding graphical objects (as labels or buttons...), you need to specify to the container that will receive those objects how to place them in relation to each other. This behavior is setup by specific objects called **layouts**.
 
@@ -186,7 +186,7 @@ To set a specific layout to a widget, you can use the :code:`setLayout` method o
 
 
 First label
-~~~~~~~~~~~
+===========
 
 We can now include graphical objects in our windowed application !
 
@@ -236,7 +236,7 @@ Here is the result :
 |
 
 CSS decorations and alignment
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=============================
 
 Qt graphical elements are mostly based on **HTML and CSS rendering**. It's possible to add CSS properties to lots of Qt objects as **QLabel** by using the :code:`setStyleSheet` method of the graphical object class.
 
@@ -265,13 +265,13 @@ The result of the code above is given in the next figure.
 
 
 Separated classes for containers
---------------------------------
+********************************
 
 In order to not overload the code and to make the debugging process easier, you can create a specific class for each main part of your application, especially for containers. All the containers of your main application inherite from the :code:`QWidget` class.
 
 
 SimpleWidget class
-~~~~~~~~~~~~~~~~~~
+==================
 
 In the next exemple, a :code:`SimpleWidget` class was defined in a file called :file:`SimpleWidget.py` stored in the directory called :file:`elements` of the :file:`interface` directory (where the :file:`Gui1.py` is stored).
 
@@ -309,12 +309,12 @@ Few parameters permit to customize the rendering of the graphical object : a tit
 These parameters are attributes of the class (:code:`self`). They could be changed independently for each instance of a :code:`SimpleWidget` object.
 
 Layout of the SimpleWidget class
-""""""""""""""""""""""""""""""""
+--------------------------------
 
 Test
 
 Graphical objects of the SimpleWidget class
-"""""""""""""""""""""""""""""""""""""""""""
+-------------------------------------------
 
 
 
@@ -327,4 +327,4 @@ Graphical objects of the SimpleWidget class
 
 
 Main application
-~~~~~~~~~~~~~~~~
+****************
