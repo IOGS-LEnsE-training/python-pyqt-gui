@@ -301,9 +301,8 @@ Few parameters permit to customize the rendering of the graphical object : a tit
   
   class SimpleWidget(QWidget):
     def __init__(...):
-      [...]
-	  
-	  self.title = title
+      [...]  
+      self.title = title
       self.background_color = background_color
       self.text_color = text_color
 	  
