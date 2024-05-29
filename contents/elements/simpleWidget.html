@@ -120,7 +120,72 @@
 <p>This class inherites from the QWidget class, a container of Qt application. In the initialization function of this new class, the constructor (__init__ function) of the mother class is called (mother class is the QWidget class).</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="k">class</span> <span class="nc">SimpleWidget</span><span class="p">(</span><span class="n">QWidget</span><span class="p">):</span>
 <span class="linenos">2</span>  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">background_color</span><span class="o">=</span><span class="s1">&#39;#0A3250&#39;</span><span class="p">,</span> <span class="n">text_color</span><span class="o">=</span><span class="s1">&#39;#FFFFFF&#39;</span><span class="p">):</span>
-<span class="linenos">3</span>        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+<span class="linenos">3</span>    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</pre></div>
+</div>
+<section id="arguments-of-the-class">
+<h3>Arguments of the class<a class="headerlink" href="#arguments-of-the-class" title="Link to this heading"></a></h3>
+<p>This class contains :</p>
+<ul class="simple">
+<li><p>a title : corresponding to the text displays in the center of the widget;</p></li>
+<li><p>a background color;</p></li>
+<li><p>a text color.</p></li>
+</ul>
+<p>They are defined as argument of the contructor of the class.</p>
+</section>
+<section id="css-style">
+<h3>CSS Style<a class="headerlink" href="#css-style" title="Link to this heading"></a></h3>
+<p>To make the interface more visually appealing, it is possible to add <strong>CSS elements</strong> (recognized by PyQt6).</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="n">style_css</span> <span class="o">=</span> <span class="s2">&quot;background-color: &quot;</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">background_color</span><span class="o">+</span><span class="s2">&quot;;&quot;</span>
+<span class="linenos">2</span><span class="n">style_css</span><span class="o">+=</span> <span class="s2">&quot;border-radius: 10px;&quot;</span>
+<span class="linenos">3</span><span class="n">style_css</span><span class="o">+=</span> <span class="s2">&quot;border-color: black; border-width: 2px; font: bold 12px; padding: 20px;&quot;</span>
+<span class="linenos">4</span><span class="n">style_css</span><span class="o">+=</span> <span class="s2">&quot;border-style: solid;&quot;</span>
+<span class="linenos">5</span><span class="n">style_css</span><span class="o">+=</span> <span class="s2">&quot;color: &quot;</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">text_color</span><span class="o">+</span><span class="s2">&quot;;&quot;</span>
+<span class="linenos">6</span><span class="bp">self</span><span class="o">.</span><span class="n">setStyleSheet</span><span class="p">(</span><span class="n">style_css</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The CSS style is applied thanks to the <code class="code docutils literal notranslate"><span class="pre">setStyleSheet</span></code> of the <code class="xref py py-class docutils literal notranslate"><span class="pre">QWidget</span></code> class.</p>
+<p>To learn more about CSS Style, you can check this tutorial : <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Learn/Getting_started_with_the_web/CSS_basics">Start with CSS</a>.</p>
+</section>
+<section id="graphical-objects">
+<h3>Graphical objects<a class="headerlink" href="#graphical-objects" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="bp">self</span><span class="o">.</span><span class="n">layout</span> <span class="o">=</span> <span class="n">QGridLayout</span><span class="p">()</span>
+<span class="linenos">2</span><span class="bp">self</span><span class="o">.</span><span class="n">setLayout</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">layout</span><span class="p">)</span>
+<span class="linenos">3</span>
+<span class="linenos">4</span><span class="bp">self</span><span class="o">.</span><span class="n">title_label</span> <span class="o">=</span> <span class="n">QLabel</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">title</span><span class="p">)</span>
+<span class="linenos">5</span><span class="n">style_css</span> <span class="o">=</span> <span class="s2">&quot;color: &quot;</span><span class="o">+</span><span class="bp">self</span><span class="o">.</span><span class="n">text_color</span><span class="o">+</span><span class="s2">&quot;;&quot;</span>
+<span class="linenos">6</span><span class="bp">self</span><span class="o">.</span><span class="n">title_label</span><span class="o">.</span><span class="n">setStyleSheet</span><span class="p">(</span><span class="n">style_css</span><span class="p">)</span>
+<span class="linenos">7</span><span class="bp">self</span><span class="o">.</span><span class="n">title_label</span><span class="o">.</span><span class="n">setAlignment</span><span class="p">(</span><span class="n">Qt</span><span class="o">.</span><span class="n">AlignmentFlag</span><span class="o">.</span><span class="n">AlignCenter</span><span class="p">)</span>
+<span class="linenos">8</span>
+<span class="linenos">9</span><span class="bp">self</span><span class="o">.</span><span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">title_label</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="test-the-class">
+<h2>Test the class<a class="headerlink" href="#test-the-class" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<span class="linenos"> 2</span>  <span class="kn">import</span> <span class="nn">sys</span>
+<span class="linenos"> 3</span>  <span class="kn">from</span> <span class="nn">PyQt6.QtGui</span> <span class="kn">import</span> <span class="n">QIcon</span>
+<span class="linenos"> 4</span>
+<span class="linenos"> 5</span>  <span class="k">class</span> <span class="nc">MyWindow</span><span class="p">(</span><span class="n">QMainWindow</span><span class="p">):</span>
+<span class="linenos"> 6</span>    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="linenos"> 7</span>      <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+<span class="linenos"> 8</span>      <span class="c1"># Define Window title</span>
+<span class="linenos"> 9</span>      <span class="bp">self</span><span class="o">.</span><span class="n">setWindowTitle</span><span class="p">(</span><span class="s2">&quot;LEnsE - Window Title&quot;</span><span class="p">)</span>
+<span class="linenos">10</span>      <span class="bp">self</span><span class="o">.</span><span class="n">setWindowIcon</span><span class="p">(</span><span class="n">QIcon</span><span class="p">(</span><span class="s1">&#39;images/IOGS-LEnsE-logo.jpg&#39;</span><span class="p">))</span>
+<span class="linenos">11</span>      <span class="bp">self</span><span class="o">.</span><span class="n">setGeometry</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">700</span><span class="p">)</span>
+<span class="linenos">12</span>
+<span class="linenos">13</span>      <span class="c1"># Widget to test</span>
+<span class="linenos">14</span>      <span class="bp">self</span><span class="o">.</span><span class="n">main_area</span> <span class="o">=</span> <span class="n">SimpleWidget</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;Main Area&#39;</span><span class="p">,</span>
+<span class="linenos">15</span>                                    <span class="n">background_color</span><span class="o">=</span><span class="s1">&#39;white&#39;</span><span class="p">,</span>
+<span class="linenos">16</span>                                    <span class="n">text_color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="linenos">17</span>      <span class="bp">self</span><span class="o">.</span><span class="n">setCentralWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">main_area</span><span class="p">)</span>
+<span class="linenos">18</span>
+<span class="linenos">19</span>  <span class="n">app</span> <span class="o">=</span> <span class="n">QApplication</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
+<span class="linenos">20</span>  <span class="n">main</span> <span class="o">=</span> <span class="n">MyWindow</span><span class="p">()</span>
+<span class="linenos">21</span>  <span class="n">main</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="linenos">22</span>  <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">exec</span><span class="p">())</span>
 </pre></div>
 </div>
 </section>
