@@ -21,7 +21,7 @@ This class inherites from the QWidget class, a container of Qt application. In t
 .. code-block:: python
   :linenos:
 
-	class SimpleWidget(QWidget):
-		def __init__(self, title='', background_color='#0A3250', text_color='#FFFFFF'):
-			super().__init__(parent=None)
+  class SimpleWidget(QWidget):
+    def __init__(self, title='', background_color='#0A3250', text_color='#FFFFFF'):
+	  super().__init__(parent=None)
 
