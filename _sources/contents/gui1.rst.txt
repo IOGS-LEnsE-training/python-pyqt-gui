@@ -55,7 +55,8 @@ Complete the previous :file:`my_app.py` file by these new lines.
 
 .. code-block:: python
   :linenos:
-  
+
+  import sys
   from PyQt6.QtWidgets import QApplication
 
   if __name__ == "__main__":
