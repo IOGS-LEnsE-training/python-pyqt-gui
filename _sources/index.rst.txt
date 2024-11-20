@@ -11,7 +11,7 @@ Welcome to PyQt GUI's documentation !
 
 **Python PyQt GUI** is a complete tutorial to develop a **graphical user interface** based on **PyQt6** in Python.
 
-The GitHub repository of this project : `python-pyqt-gui <https://iogs-lense-training.github.io/python-pyqt-gui/index.html>`_
+The GitHub repository of this project : `python-pyqt-gui <https://github.com/IOGS-LEnsE-training/python-pyqt-gui>`_
 
 |
 
