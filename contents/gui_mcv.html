@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GUI2 Example &mdash; PyQt6 GUI - LEnsE / IOGS 0.1 documentation</title>
+  <title>MVC Approach to GUI Development &mdash; PyQt6 GUI - LEnsE / IOGS 0.1 documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../_static/css/lense-training.css?v=6d89b175" />
@@ -22,8 +22,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="GUI3 Example" href="gui3.html" />
-    <link rel="prev" title="SimpleWidget Example" href="elements/simpleWidget.html" /> 
+    <link rel="next" title="PyQt6 Installation" href="pyqt6.html" />
+    <link rel="prev" title="Welcome to PyQt GUI’s documentation !" href="../index.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -47,8 +47,14 @@
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">PyQt6</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="gui_mcv.html">     GUI development / MCV</a></li>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">     GUI development / MCV</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#model">Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#view">View</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#controller">Controller</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#method">Method</a></li>
+</ul>
+</li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">PyQt6</span></p>
 <ul>
@@ -56,9 +62,9 @@
 <li class="toctree-l1"><a class="reference internal" href="pyqt6_basics.html">     PyQt6 basics principle</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Graphical objects</span></p>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="gui1.html">     GUI1 Example : 1 left area, 1 main area, no event</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">     GUI2 Example : 1 left area, 4 main areas, no event</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gui2.html">     GUI2 Example : 1 left area, 4 main areas, no event</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Events and signals</span></p>
 <ul>
@@ -80,9 +86,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">GUI2 Example</li>
+      <li class="breadcrumb-item active">MVC Approach to GUI Development</li>
       <li class="wy-breadcrumbs-aside">
-            <a href="../_sources/contents/gui2.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/contents/gui_mcv.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -90,27 +96,39 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="gui2-example">
-<h1>GUI2 Example<a class="headerlink" href="#gui2-example" title="Link to this heading"></a></h1>
-<p>In this second example of GUI, we will learn …</p>
-<p>At the end of this example, you will be able to create this skeleton of graphical application.</p>
-<a class="reference internal image-reference" href="../_images/gui2_view.png"><img alt="Gui2 Example View" class="align-center" src="../_images/gui2_view.png" style="width: 317.0px; height: 275.5px;" />
-</a>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
-<p>The complete file <code class="file docutils literal notranslate"><span class="pre">Gui02.py</span></code> of this example is in the <code class="file docutils literal notranslate"><span class="pre">interface/</span></code> directory.</p>
-<div class="line-block">
-<div class="line"><br /></div>
-</div>
+  <section id="mvc-approach-to-gui-development">
+<h1>MVC Approach to GUI Development<a class="headerlink" href="#mvc-approach-to-gui-development" title="Link to this heading"></a></h1>
+<p>The <strong>Model–View–Controller</strong> (MVC) architecture is a software design pattern used to separate an application into three interconnected components: the <strong>Model</strong>, the <strong>View</strong>, and the <strong>Controller</strong>. This separation helps organize code, improve maintainability, and facilitate collaborative development, especially in graphical user interfaces (GUIs).</p>
+<section id="model">
+<h2>Model<a class="headerlink" href="#model" title="Link to this heading"></a></h2>
+<p>The Model represents the data and the business logic of the application. It is responsible for managing the application’s state, processing information, and enforcing rules. The Model is completely independent from the user interface, meaning it can be reused or tested without relying on the View or Controller.</p>
+</section>
+<section id="view">
+<h2>View<a class="headerlink" href="#view" title="Link to this heading"></a></h2>
+<p>The View corresponds to the presentation layer—what the user actually sees and interacts with on the screen. It displays data from the Model and updates automatically when the Model changes. However, the View does not contain any business logic; it only focuses on the visual representation.</p>
+</section>
+<section id="controller">
+<h2>Controller<a class="headerlink" href="#controller" title="Link to this heading"></a></h2>
+<p>The Controller acts as an intermediary between the user and the system. It handles user input (such as clicks or keyboard actions), interprets it, and updates the Model or the View accordingly. The Controller ensures that user actions produce the intended effects within the application.</p>
+</section>
+<section id="method">
+<h2>Method<a class="headerlink" href="#method" title="Link to this heading"></a></h2>
+<p>In practice, developing a GUI using the MVC pattern involves:</p>
+<ul class="simple">
+<li><p>Designing the Model to define how data is structured and manipulated.</p></li>
+<li><p>Creating the View to display this data in a clear and responsive way.</p></li>
+<li><p>Implementing the Controller to interpret user interactions and coordinate changes between the Model and the View.</p></li>
+</ul>
+<p>By following the MVC approach, developers achieve a clean separation of concerns, making the GUI easier to test, extend, and maintain over time.</p>
+</section>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="elements/simpleWidget.html" class="btn btn-neutral float-left" title="SimpleWidget Example" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="gui3.html" class="btn btn-neutral float-right" title="GUI3 Example" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../index.html" class="btn btn-neutral float-left" title="Welcome to PyQt GUI’s documentation !" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="pyqt6.html" class="btn btn-neutral float-right" title="PyQt6 Installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

@@ -51,12 +51,10 @@ In this example, a simple window (`QWidget`) containing a label and a button arr
    :alt: First PyQt6 Graphical Interface
    :align: center
 
+---
 
-Main container
---------------
-
-QMainWindow
-~~~~~~~~~~~
+Main container / QMainWindow
+----------------------------
 
 `QMainWindow` is the main application window. It is typically used when you need standard window features such as **menus**, **toolbars**, and **status bars**.
 
@@ -82,11 +80,8 @@ Example:
 Here, the `QMainWindow` automatically provides a window frame. The `setCentralWidget()` method sets the main content inside it.
 
 
-Graphical container
--------------------
-
-QWidget
-~~~~~~~
+Graphical container / QWidget
+-----------------------------
 
 `QWidget` is the **base class** for all user interface objects in PyQt6. It is a flexible container that can hold other widgets and layouts. It’s often used as the main element of a simple window.
 
@@ -101,6 +96,10 @@ Example:
    layout.addWidget(QLabel("Inside QWidget"))
    widget.setLayout(layout)
    widget.show()
+   
+
+
+---
 
 
 Graphical objects
@@ -484,3 +483,5 @@ This program creates an interactive window that greets the user by name.
 ---
 
 With this example, you now have the foundations for creating **interactive and visually customized GUIs** using PyQt6 — combining text input, buttons, labels, and events into a fully functional application.
+
+

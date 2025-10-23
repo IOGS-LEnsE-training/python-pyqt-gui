@@ -22,6 +22,12 @@ GUI Tutorials
    :maxdepth: 1
    :caption: PyQt6
    
+	GUI development / MCV<contents/gui_mcv>
+
+.. toctree::
+   :maxdepth: 1
+   :caption: PyQt6
+   
 	PyQt6 installation<contents/pyqt6>
 	PyQt6 basics principle<contents/pyqt6_basics>
 
