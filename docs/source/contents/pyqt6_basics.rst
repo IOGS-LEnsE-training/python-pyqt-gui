@@ -45,8 +45,12 @@ Example:
 
    sys.exit(app.exec())
 
-**Explanation:**  
-We create a simple window (`QWidget`) containing a label and a button arranged vertically using a `QVBoxLayout`.
+In this example, a simple window (`QWidget`) containing a label and a button arranged vertically using a `QVBoxLayout` is created.
+
+.. image:: _static/images/pqt6_basics_first.png
+   :alt: First PyQt6 Graphical Interface
+   :align: center
+
 
 
 Main container
