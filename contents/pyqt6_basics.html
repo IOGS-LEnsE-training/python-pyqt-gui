@@ -7,7 +7,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>PyQt6 Basics &mdash; PyQt6 GUI - LEnsE / IOGS 0.1 documentation</title>
-      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
       <link rel="stylesheet" type="text/css" href="../_static/css/lense-training.css?v=6d89b175" />
       <link rel="stylesheet" type="text/css" href="../_static/css/links.css?v=7a4609b2" />
@@ -62,7 +62,15 @@
 <li class="toctree-l2"><a class="reference internal" href="#graphical-objects">Graphical objects</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#qlabel">QLabel</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#qpushbutton">QPushButton</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#qlineedit">QLineEdit</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#css-style">CSS style</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#layouts-overview">Layouts overview</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#qhboxlayout">QHBoxLayout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#qvboxlayout">QVBoxLayout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#qgridlayout">QGridLayout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#summary-of-layouts">Summary of Layouts</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#events-and-signals">Events and signals</a></li>
@@ -107,7 +115,7 @@
   <section id="pyqt6-basics">
 <span id="pyqt6-basics-page"></span><h1>PyQt6 Basics<a class="headerlink" href="#pyqt6-basics" title="Link to this heading"></a></h1>
 <p>All the examples given in this tutorial are based on <strong>PyQt6</strong> graphical objects.</p>
-<p>In this part, we will :</p>
+<p>In this part, we will:</p>
 <ul class="simple">
 <li><p>learn the basics of the development of a graphical window based on PyQt6,</p></li>
 <li><p>list the main graphical objects that are useful for simple GUI,</p></li>
@@ -115,34 +123,417 @@
 </ul>
 <section id="containers-contents-and-layouts">
 <h2>Containers, contents and layouts<a class="headerlink" href="#containers-contents-and-layouts" title="Link to this heading"></a></h2>
+<p>In PyQt6, a graphical application is made up of <strong>containers</strong>, <strong>contents</strong>, and <strong>layouts</strong>.</p>
+<ul class="simple">
+<li><p>A <strong>container</strong> (for example <cite>QMainWindow</cite> or <cite>QWidget</cite>) defines the global window or a section of it.</p></li>
+<li><p>The <strong>contents</strong> are the graphical elements inside the container (labels, buttons, text boxes, etc.).</p></li>
+<li><p>The <strong>layout</strong> defines how these contents are positioned and resized within the container.</p></li>
+</ul>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">PyQt6.QtWidgets</span><span class="w"> </span><span class="kn">import</span> <span class="n">QApplication</span><span class="p">,</span> <span class="n">QWidget</span><span class="p">,</span> <span class="n">QLabel</span><span class="p">,</span> <span class="n">QPushButton</span><span class="p">,</span> <span class="n">QVBoxLayout</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">QApplication</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
+
+<span class="n">window</span> <span class="o">=</span> <span class="n">QWidget</span><span class="p">()</span>
+<span class="n">window</span><span class="o">.</span><span class="n">setWindowTitle</span><span class="p">(</span><span class="s2">&quot;My First PyQt6 Window&quot;</span><span class="p">)</span>
+
+<span class="n">label</span> <span class="o">=</span> <span class="n">QLabel</span><span class="p">(</span><span class="s2">&quot;Hello, PyQt6!&quot;</span><span class="p">)</span>
+<span class="n">button</span> <span class="o">=</span> <span class="n">QPushButton</span><span class="p">(</span><span class="s2">&quot;Click Me&quot;</span><span class="p">)</span>
+
+<span class="n">layout</span> <span class="o">=</span> <span class="n">QVBoxLayout</span><span class="p">()</span>
+<span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
+<span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">button</span><span class="p">)</span>
+
+<span class="n">window</span><span class="o">.</span><span class="n">setLayout</span><span class="p">(</span><span class="n">layout</span><span class="p">)</span>
+<span class="n">window</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">exec</span><span class="p">())</span>
+</pre></div>
+</div>
+<p><strong>Explanation:</strong>
+We create a simple window (<cite>QWidget</cite>) containing a label and a button arranged vertically using a <cite>QVBoxLayout</cite>.</p>
 </section>
 <section id="main-container">
 <h2>Main container<a class="headerlink" href="#main-container" title="Link to this heading"></a></h2>
 <section id="qmainwindow">
 <h3>QMainWindow<a class="headerlink" href="#qmainwindow" title="Link to this heading"></a></h3>
+<p><cite>QMainWindow</cite> is the main application window. It is typically used when you need standard window features such as <strong>menus</strong>, <strong>toolbars</strong>, and <strong>status bars</strong>.</p>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">PyQt6.QtWidgets</span><span class="w"> </span><span class="kn">import</span> <span class="n">QApplication</span><span class="p">,</span> <span class="n">QMainWindow</span><span class="p">,</span> <span class="n">QLabel</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">MainWindow</span><span class="p">(</span><span class="n">QMainWindow</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setWindowTitle</span><span class="p">(</span><span class="s2">&quot;QMainWindow Example&quot;</span><span class="p">)</span>
+        <span class="n">label</span> <span class="o">=</span> <span class="n">QLabel</span><span class="p">(</span><span class="s2">&quot;This is the central widget&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setCentralWidget</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">QApplication</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
+<span class="n">window</span> <span class="o">=</span> <span class="n">MainWindow</span><span class="p">()</span>
+<span class="n">window</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">exec</span><span class="p">())</span>
+</pre></div>
+</div>
+<p><strong>Explanation:</strong>
+Here, the <cite>QMainWindow</cite> automatically provides a window frame. The <cite>setCentralWidget()</cite> method sets the main content inside it.</p>
 </section>
 </section>
 <section id="graphical-container">
 <h2>Graphical container<a class="headerlink" href="#graphical-container" title="Link to this heading"></a></h2>
 <section id="qwidget">
 <h3>QWidget<a class="headerlink" href="#qwidget" title="Link to this heading"></a></h3>
+<p><cite>QWidget</cite> is the base class for all user interface objects in PyQt6.
+It can be used as a simple window or as a container for other widgets.</p>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">PyQt6.QtWidgets</span><span class="w"> </span><span class="kn">import</span> <span class="n">QWidget</span><span class="p">,</span> <span class="n">QLabel</span><span class="p">,</span> <span class="n">QVBoxLayout</span>
+
+<span class="n">widget</span> <span class="o">=</span> <span class="n">QWidget</span><span class="p">()</span>
+<span class="n">layout</span> <span class="o">=</span> <span class="n">QVBoxLayout</span><span class="p">()</span>
+<span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">QLabel</span><span class="p">(</span><span class="s2">&quot;Inside QWidget&quot;</span><span class="p">))</span>
+<span class="n">widget</span><span class="o">.</span><span class="n">setLayout</span><span class="p">(</span><span class="n">layout</span><span class="p">)</span>
+<span class="n">widget</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><strong>Explanation:</strong>
+<cite>QWidget</cite> is a flexible container that can hold other widgets and layouts. It’s often used as the main element of a simple window.</p>
 </section>
 </section>
 <section id="graphical-objects">
 <h2>Graphical objects<a class="headerlink" href="#graphical-objects" title="Link to this heading"></a></h2>
 <section id="qlabel">
 <h3>QLabel<a class="headerlink" href="#qlabel" title="Link to this heading"></a></h3>
+<p><cite>QLabel</cite> is used to display text or images in a window.</p>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">label</span> <span class="o">=</span> <span class="n">QLabel</span><span class="p">(</span><span class="s2">&quot;This is a simple text label&quot;</span><span class="p">)</span>
+<span class="c1"># You can also display an image</span>
+<span class="c1"># label.setPixmap(QPixmap(&quot;logo.png&quot;))</span>
+</pre></div>
+</div>
+<p><strong>Explanation:</strong>
+<cite>QLabel</cite> provides a simple way to show static information such as text, images, or even HTML content.</p>
 </section>
 <section id="qpushbutton">
 <h3>QPushButton<a class="headerlink" href="#qpushbutton" title="Link to this heading"></a></h3>
+<p><cite>QPushButton</cite> represents a clickable button that can trigger an action when pressed.</p>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">PyQt6.QtWidgets</span><span class="w"> </span><span class="kn">import</span> <span class="n">QPushButton</span>
+
+<span class="n">button</span> <span class="o">=</span> <span class="n">QPushButton</span><span class="p">(</span><span class="s2">&quot;Click Me&quot;</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">on_click</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Button clicked!&quot;</span><span class="p">)</span>
+
+<span class="n">button</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">on_click</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Explanation:</strong>
+Here, the button emits a signal (<cite>clicked</cite>) which is connected to the <cite>on_click()</cite> function that performs an action when the button is pressed.</p>
+</section>
+<section id="qlineedit">
+<h3>QLineEdit<a class="headerlink" href="#qlineedit" title="Link to this heading"></a></h3>
+<p><cite>QLineEdit</cite> is a widget that allows the user to enter a single line of text.
+It is often used for names, search bars, or any text input.</p>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">PyQt6.QtWidgets</span><span class="w"> </span><span class="kn">import</span> <span class="n">QLineEdit</span><span class="p">,</span> <span class="n">QLabel</span><span class="p">,</span> <span class="n">QVBoxLayout</span><span class="p">,</span> <span class="n">QWidget</span>
+
+<span class="n">widget</span> <span class="o">=</span> <span class="n">QWidget</span><span class="p">()</span>
+<span class="n">layout</span> <span class="o">=</span> <span class="n">QVBoxLayout</span><span class="p">()</span>
+
+<span class="n">label</span> <span class="o">=</span> <span class="n">QLabel</span><span class="p">(</span><span class="s2">&quot;Enter your name:&quot;</span><span class="p">)</span>
+<span class="n">input_field</span> <span class="o">=</span> <span class="n">QLineEdit</span><span class="p">()</span>
+<span class="n">input_field</span><span class="o">.</span><span class="n">setPlaceholderText</span><span class="p">(</span><span class="s2">&quot;Type here...&quot;</span><span class="p">)</span>
+
+<span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">label</span><span class="p">)</span>
+<span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">input_field</span><span class="p">)</span>
+<span class="n">widget</span><span class="o">.</span><span class="n">setLayout</span><span class="p">(</span><span class="n">layout</span><span class="p">)</span>
+<span class="n">widget</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<p><strong>Explanation:</strong>
+<cite>QLineEdit</cite> displays an editable text box.
+The <cite>setPlaceholderText()</cite> method shows a greyed-out hint until the user types something.</p>
 </section>
 <section id="css-style">
 <h3>CSS style<a class="headerlink" href="#css-style" title="Link to this heading"></a></h3>
-<p>Most of the graphical objects in <em>PyQt6</em> can be customized by adding <strong>style sheets</strong> in <strong>CSS langage</strong>.</p>
+<p>Most of the graphical objects in <em>PyQt6</em> can be customized by adding <strong>style sheets</strong> in <strong>CSS language</strong>.</p>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">button</span><span class="o">.</span><span class="n">setStyleSheet</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    QPushButton {</span>
+<span class="s2">        background-color: lightblue;</span>
+<span class="s2">        border-radius: 10px;</span>
+<span class="s2">        padding: 8px;</span>
+<span class="s2">    }</span>
+<span class="s2">    QPushButton:hover {</span>
+<span class="s2">        background-color: lightgreen;</span>
+<span class="s2">    }</span>
+<span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Explanation:</strong>
+Style sheets allow you to personalize widgets easily. They use the same syntax as CSS in web design.</p>
+</section>
+</section>
+<section id="layouts-overview">
+<h2>Layouts overview<a class="headerlink" href="#layouts-overview" title="Link to this heading"></a></h2>
+<p>In PyQt6, <strong>layouts</strong> are used to organize widgets inside a window or container.
+They control how widgets are positioned, resized, and aligned when the window changes size.</p>
+<p>Without layouts, widgets may overlap or fail to resize properly.
+The most common layouts are:</p>
+<ul class="simple">
+<li><p><cite>QHBoxLayout</cite>: places widgets <strong>horizontally</strong> (side by side)</p></li>
+<li><p><cite>QVBoxLayout</cite>: places widgets <strong>vertically</strong> (top to bottom)</p></li>
+<li><p><cite>QGridLayout</cite>: arranges widgets in a <strong>grid</strong> (rows and columns)</p></li>
+</ul>
+<p>Each layout automatically manages spacing and resizing.</p>
+<section id="qhboxlayout">
+<h3>QHBoxLayout<a class="headerlink" href="#qhboxlayout" title="Link to this heading"></a></h3>
+<p>Places widgets next to each other in a <strong>horizontal line</strong>.</p>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">PyQt6.QtWidgets</span><span class="w"> </span><span class="kn">import</span> <span class="n">QApplication</span><span class="p">,</span> <span class="n">QWidget</span><span class="p">,</span> <span class="n">QPushButton</span><span class="p">,</span> <span class="n">QHBoxLayout</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">QApplication</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
+<span class="n">window</span> <span class="o">=</span> <span class="n">QWidget</span><span class="p">()</span>
+<span class="n">window</span><span class="o">.</span><span class="n">setWindowTitle</span><span class="p">(</span><span class="s2">&quot;QHBoxLayout Example&quot;</span><span class="p">)</span>
+
+<span class="n">layout</span> <span class="o">=</span> <span class="n">QHBoxLayout</span><span class="p">()</span>
+
+<span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">QPushButton</span><span class="p">(</span><span class="s2">&quot;Left&quot;</span><span class="p">))</span>
+<span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">QPushButton</span><span class="p">(</span><span class="s2">&quot;Center&quot;</span><span class="p">))</span>
+<span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">QPushButton</span><span class="p">(</span><span class="s2">&quot;Right&quot;</span><span class="p">))</span>
+
+<span class="n">window</span><span class="o">.</span><span class="n">setLayout</span><span class="p">(</span><span class="n">layout</span><span class="p">)</span>
+<span class="n">window</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">exec</span><span class="p">())</span>
+</pre></div>
+</div>
+<p><strong>Explanation:</strong>
+<cite>QHBoxLayout</cite> aligns widgets from left to right, automatically adjusting their size if the window changes width.</p>
+</section>
+<section id="qvboxlayout">
+<h3>QVBoxLayout<a class="headerlink" href="#qvboxlayout" title="Link to this heading"></a></h3>
+<p>Places widgets on top of each other in a <strong>vertical column</strong>.</p>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">PyQt6.QtWidgets</span><span class="w"> </span><span class="kn">import</span> <span class="n">QApplication</span><span class="p">,</span> <span class="n">QWidget</span><span class="p">,</span> <span class="n">QPushButton</span><span class="p">,</span> <span class="n">QVBoxLayout</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">QApplication</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
+<span class="n">window</span> <span class="o">=</span> <span class="n">QWidget</span><span class="p">()</span>
+<span class="n">window</span><span class="o">.</span><span class="n">setWindowTitle</span><span class="p">(</span><span class="s2">&quot;QVBoxLayout Example&quot;</span><span class="p">)</span>
+
+<span class="n">layout</span> <span class="o">=</span> <span class="n">QVBoxLayout</span><span class="p">()</span>
+<span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">QPushButton</span><span class="p">(</span><span class="s2">&quot;Top&quot;</span><span class="p">))</span>
+<span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">QPushButton</span><span class="p">(</span><span class="s2">&quot;Middle&quot;</span><span class="p">))</span>
+<span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">QPushButton</span><span class="p">(</span><span class="s2">&quot;Bottom&quot;</span><span class="p">))</span>
+
+<span class="n">window</span><span class="o">.</span><span class="n">setLayout</span><span class="p">(</span><span class="n">layout</span><span class="p">)</span>
+<span class="n">window</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">exec</span><span class="p">())</span>
+</pre></div>
+</div>
+<p><strong>Explanation:</strong>
+<cite>QVBoxLayout</cite> stacks widgets vertically.
+This is useful for creating columns of buttons or text fields that resize gracefully.</p>
+</section>
+<section id="qgridlayout">
+<h3>QGridLayout<a class="headerlink" href="#qgridlayout" title="Link to this heading"></a></h3>
+<p><cite>QGridLayout</cite> organizes widgets into a <strong>table</strong> with rows and columns.
+You can specify the exact position of each widget using coordinates <cite>(row, column)</cite>.</p>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">PyQt6.QtWidgets</span><span class="w"> </span><span class="kn">import</span> <span class="n">QApplication</span><span class="p">,</span> <span class="n">QWidget</span><span class="p">,</span> <span class="n">QPushButton</span><span class="p">,</span> <span class="n">QGridLayout</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">QApplication</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
+<span class="n">window</span> <span class="o">=</span> <span class="n">QWidget</span><span class="p">()</span>
+<span class="n">window</span><span class="o">.</span><span class="n">setWindowTitle</span><span class="p">(</span><span class="s2">&quot;QGridLayout Example&quot;</span><span class="p">)</span>
+
+<span class="n">layout</span> <span class="o">=</span> <span class="n">QGridLayout</span><span class="p">()</span>
+
+<span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">QPushButton</span><span class="p">(</span><span class="s2">&quot;(0,0)&quot;</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">QPushButton</span><span class="p">(</span><span class="s2">&quot;(0,1)&quot;</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">QPushButton</span><span class="p">(</span><span class="s2">&quot;(1,0)&quot;</span><span class="p">),</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="n">QPushButton</span><span class="p">(</span><span class="s2">&quot;(1,1)&quot;</span><span class="p">),</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">window</span><span class="o">.</span><span class="n">setLayout</span><span class="p">(</span><span class="n">layout</span><span class="p">)</span>
+<span class="n">window</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">exec</span><span class="p">())</span>
+</pre></div>
+</div>
+<p><strong>Explanation:</strong>
+<cite>QGridLayout</cite> allows precise placement of widgets in a grid format.
+This layout is especially useful for forms, control panels, or calculator interfaces.</p>
+<p>—</p>
+</section>
+<section id="summary-of-layouts">
+<h3>Summary of Layouts<a class="headerlink" href="#summary-of-layouts" title="Link to this heading"></a></h3>
+<p><strong>Tip:</strong>
+Layouts can also be <strong>nested</strong> (for example, a vertical layout containing several horizontal layouts).
+This is very common for building complex GUIs with flexible design.</p>
+<p>—</p>
+<p>With these layout techniques, you can now structure your PyQt6 applications in a clean, responsive, and professional way — ensuring your interface adapts gracefully to different screen sizes and user interactions.</p>
 </section>
 </section>
 <section id="events-and-signals">
 <h2>Events and signals<a class="headerlink" href="#events-and-signals" title="Link to this heading"></a></h2>
+<p>Events are user actions (like mouse clicks, key presses, or window resizing) that the application can respond to.
+<strong>Signals</strong> are messages emitted by widgets to indicate that an event occurred.
+<strong>Slots</strong> are functions or methods that handle these signals.</p>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">PyQt6.QtWidgets</span><span class="w"> </span><span class="kn">import</span> <span class="n">QApplication</span><span class="p">,</span> <span class="n">QPushButton</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">QApplication</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">say_hello</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello, World!&quot;</span><span class="p">)</span>
+
+<span class="n">button</span> <span class="o">=</span> <span class="n">QPushButton</span><span class="p">(</span><span class="s2">&quot;Say Hello&quot;</span><span class="p">)</span>
+<span class="n">button</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">say_hello</span><span class="p">)</span>
+<span class="n">button</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">exec</span><span class="p">())</span>
+</pre></div>
+</div>
+<p><strong>Explanation:</strong>
+The <cite>clicked</cite> signal is emitted when the button is pressed.
+The function <cite>say_hello()</cite> is the slot that is executed in response.</p>
+<p>—</p>
+<p>This simple structure forms the foundation of GUI programming in <strong>PyQt6</strong>:
+you define widgets, arrange them with layouts, customize their appearance with CSS, and make them interactive through signals and slots.</p>
+<p>Below is a complete example that combines all the concepts learned so far:
+- <cite>QMainWindow</cite> as the main window
+- <cite>QWidget</cite> and layouts
+- <cite>QLabel</cite>, <cite>QPushButton</cite>, and <cite>QLineEdit</cite>
+- <strong>Signals and slots</strong>
+- <strong>CSS styling</strong>
+- An <strong>exit confirmation dialog</strong></p>
+<p>Example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">PyQt6.QtWidgets</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span>
+    <span class="n">QApplication</span><span class="p">,</span> <span class="n">QMainWindow</span><span class="p">,</span> <span class="n">QWidget</span><span class="p">,</span>
+    <span class="n">QLabel</span><span class="p">,</span> <span class="n">QPushButton</span><span class="p">,</span> <span class="n">QLineEdit</span><span class="p">,</span>
+    <span class="n">QVBoxLayout</span><span class="p">,</span> <span class="n">QHBoxLayout</span><span class="p">,</span> <span class="n">QMessageBox</span>
+<span class="p">)</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">PyQt6.QtCore</span><span class="w"> </span><span class="kn">import</span> <span class="n">Qt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">MainWindow</span><span class="p">(</span><span class="n">QMainWindow</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+
+        <span class="c1"># --- Window setup ---</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setWindowTitle</span><span class="p">(</span><span class="s2">&quot;PyQt6 Interactive Example&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="mi">400</span><span class="p">,</span> <span class="mi">300</span><span class="p">)</span>
+
+        <span class="c1"># --- Central widget ---</span>
+        <span class="n">central_widget</span> <span class="o">=</span> <span class="n">QWidget</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setCentralWidget</span><span class="p">(</span><span class="n">central_widget</span><span class="p">)</span>
+
+        <span class="c1"># --- Layouts ---</span>
+        <span class="n">main_layout</span> <span class="o">=</span> <span class="n">QVBoxLayout</span><span class="p">()</span>
+        <span class="n">input_layout</span> <span class="o">=</span> <span class="n">QHBoxLayout</span><span class="p">()</span>
+        <span class="n">button_layout</span> <span class="o">=</span> <span class="n">QHBoxLayout</span><span class="p">()</span>
+
+        <span class="c1"># --- Widgets ---</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">label</span> <span class="o">=</span> <span class="n">QLabel</span><span class="p">(</span><span class="s2">&quot;Welcome! Type your name below:&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">label</span><span class="o">.</span><span class="n">setAlignment</span><span class="p">(</span><span class="n">Qt</span><span class="o">.</span><span class="n">AlignmentFlag</span><span class="o">.</span><span class="n">AlignCenter</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">input_name</span> <span class="o">=</span> <span class="n">QLineEdit</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">input_name</span><span class="o">.</span><span class="n">setPlaceholderText</span><span class="p">(</span><span class="s2">&quot;Enter your name here&quot;</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">button_greet</span> <span class="o">=</span> <span class="n">QPushButton</span><span class="p">(</span><span class="s2">&quot;Greet&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">button_clear</span> <span class="o">=</span> <span class="n">QPushButton</span><span class="p">(</span><span class="s2">&quot;Clear&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">button_quit</span> <span class="o">=</span> <span class="n">QPushButton</span><span class="p">(</span><span class="s2">&quot;Quit&quot;</span><span class="p">)</span>
+
+        <span class="c1"># --- Layout organization ---</span>
+        <span class="n">input_layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">input_name</span><span class="p">)</span>
+        <span class="n">button_layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">button_greet</span><span class="p">)</span>
+        <span class="n">button_layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">button_clear</span><span class="p">)</span>
+        <span class="n">button_layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">button_quit</span><span class="p">)</span>
+
+        <span class="n">main_layout</span><span class="o">.</span><span class="n">addWidget</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">label</span><span class="p">)</span>
+        <span class="n">main_layout</span><span class="o">.</span><span class="n">addLayout</span><span class="p">(</span><span class="n">input_layout</span><span class="p">)</span>
+        <span class="n">main_layout</span><span class="o">.</span><span class="n">addLayout</span><span class="p">(</span><span class="n">button_layout</span><span class="p">)</span>
+
+        <span class="n">central_widget</span><span class="o">.</span><span class="n">setLayout</span><span class="p">(</span><span class="n">main_layout</span><span class="p">)</span>
+
+        <span class="c1"># --- Signals and Slots ---</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">button_greet</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">greet_user</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">button_clear</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">clear_text</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">button_quit</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">close_app</span><span class="p">)</span>
+
+        <span class="c1"># --- CSS Style ---</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">setStyleSheet</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">            QLabel {</span>
+<span class="s2">                font-size: 18px;</span>
+<span class="s2">                color: #333333;</span>
+<span class="s2">            }</span>
+<span class="s2">            QLineEdit {</span>
+<span class="s2">                border: 2px solid #cccccc;</span>
+<span class="s2">                border-radius: 8px;</span>
+<span class="s2">                padding: 6px;</span>
+<span class="s2">                font-size: 14px;</span>
+<span class="s2">            }</span>
+<span class="s2">            QPushButton {</span>
+<span class="s2">                background-color: #0078D7;</span>
+<span class="s2">                color: white;</span>
+<span class="s2">                font-weight: bold;</span>
+<span class="s2">                border: none;</span>
+<span class="s2">                border-radius: 8px;</span>
+<span class="s2">                padding: 8px 14px;</span>
+<span class="s2">            }</span>
+<span class="s2">            QPushButton:hover {</span>
+<span class="s2">                background-color: #339CFF;</span>
+<span class="s2">            }</span>
+<span class="s2">            QPushButton:pressed {</span>
+<span class="s2">                background-color: #005A9E;</span>
+<span class="s2">            }</span>
+<span class="s2">        &quot;&quot;&quot;</span><span class="p">)</span>
+
+    <span class="c1"># --- Slots ---</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">greet_user</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_name</span><span class="o">.</span><span class="n">text</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">name</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">label</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Hello, </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">!&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">label</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="s2">&quot;Please enter your name first.&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">clear_text</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">input_name</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">label</span><span class="o">.</span><span class="n">setText</span><span class="p">(</span><span class="s2">&quot;Welcome! Type your name below:&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">close_app</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">reply</span> <span class="o">=</span> <span class="n">QMessageBox</span><span class="o">.</span><span class="n">question</span><span class="p">(</span>
+            <span class="bp">self</span><span class="p">,</span>
+            <span class="s2">&quot;Exit Confirmation&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;Do you really want to quit?&quot;</span><span class="p">,</span>
+            <span class="n">QMessageBox</span><span class="o">.</span><span class="n">StandardButton</span><span class="o">.</span><span class="n">Yes</span> <span class="o">|</span> <span class="n">QMessageBox</span><span class="o">.</span><span class="n">StandardButton</span><span class="o">.</span><span class="n">No</span>
+        <span class="p">)</span>
+        <span class="k">if</span> <span class="n">reply</span> <span class="o">==</span> <span class="n">QMessageBox</span><span class="o">.</span><span class="n">StandardButton</span><span class="o">.</span><span class="n">Yes</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">app</span> <span class="o">=</span> <span class="n">QApplication</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">argv</span><span class="p">)</span>
+    <span class="n">window</span> <span class="o">=</span> <span class="n">MainWindow</span><span class="p">()</span>
+    <span class="n">window</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">exec</span><span class="p">())</span>
+</pre></div>
+</div>
+<p><strong>Explanation:</strong>
+This program creates an interactive window that greets the user by name.</p>
+<ol class="arabic simple">
+<li><p>The main window (<cite>QMainWindow</cite>) holds a <cite>QWidget</cite> with vertical and horizontal layouts.</p></li>
+<li><p>A <cite>QLineEdit</cite> lets the user type their name.</p></li>
+<li><p>When the <strong>“Greet”</strong> button is clicked, the label updates to show “Hello, <em>name</em>!”.</p></li>
+<li><p>The <strong>“Clear”</strong> button resets both the input field and label.</p></li>
+<li><p>The <strong>“Quit”</strong> button opens a confirmation dialog before closing the app.</p></li>
+<li><p>CSS styles define the visual appearance of buttons, text fields, and labels.</p></li>
+</ol>
+<p>—</p>
+<p>With this example, you now have the foundations for creating <strong>interactive and visually customized GUIs</strong> using PyQt6 — combining text input, buttons, labels, and events into a fully functional application.</p>
 </section>
 </section>
 
