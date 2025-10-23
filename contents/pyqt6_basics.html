@@ -151,8 +151,8 @@
 <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">exec</span><span class="p">())</span>
 </pre></div>
 </div>
-<p>In this example, a simple window (<cite>QWidget</cite>) containing a label and a button arranged vertically using a <cite>QVBoxLayout</cite> is created.</p>
-<img alt="First PyQt6 Graphical Interface" class="align-center" src="contents/_static/images/pqt6_basics_first.png" />
+<p>In this example, a simple window (<cite>QWidget</cite>) containing a label and a button arranged vertically using a <cite>QVBoxLayout</cite> is created. The button is clickable but nothing appends…</p>
+<img alt="First PyQt6 Graphical Interface" class="align-center" src="../_images/pqt6_basics_first.png" />
 </section>
 <section id="main-container">
 <h2>Main container<a class="headerlink" href="#main-container" title="Link to this heading"></a></h2>
@@ -176,16 +176,14 @@
 <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">exec</span><span class="p">())</span>
 </pre></div>
 </div>
-<p><strong>Explanation:</strong>
-Here, the <cite>QMainWindow</cite> automatically provides a window frame. The <cite>setCentralWidget()</cite> method sets the main content inside it.</p>
+<p>Here, the <cite>QMainWindow</cite> automatically provides a window frame. The <cite>setCentralWidget()</cite> method sets the main content inside it.</p>
 </section>
 </section>
 <section id="graphical-container">
 <h2>Graphical container<a class="headerlink" href="#graphical-container" title="Link to this heading"></a></h2>
 <section id="qwidget">
 <h3>QWidget<a class="headerlink" href="#qwidget" title="Link to this heading"></a></h3>
-<p><cite>QWidget</cite> is the base class for all user interface objects in PyQt6.
-It can be used as a simple window or as a container for other widgets.</p>
+<p><cite>QWidget</cite> is the <strong>base class</strong> for all user interface objects in PyQt6. It is a flexible container that can hold other widgets and layouts. It’s often used as the main element of a simple window.</p>
 <p>Example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">PyQt6.QtWidgets</span><span class="w"> </span><span class="kn">import</span> <span class="n">QWidget</span><span class="p">,</span> <span class="n">QLabel</span><span class="p">,</span> <span class="n">QVBoxLayout</span>
 
@@ -196,23 +194,19 @@ It can be used as a simple window or as a container for other widgets.</p>
 <span class="n">widget</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Explanation:</strong>
-<cite>QWidget</cite> is a flexible container that can hold other widgets and layouts. It’s often used as the main element of a simple window.</p>
 </section>
 </section>
 <section id="graphical-objects">
 <h2>Graphical objects<a class="headerlink" href="#graphical-objects" title="Link to this heading"></a></h2>
 <section id="qlabel">
 <h3>QLabel<a class="headerlink" href="#qlabel" title="Link to this heading"></a></h3>
-<p><cite>QLabel</cite> is used to display text or images in a window.</p>
+<p><cite>QLabel</cite> is used to display text or images in a window. It provides a simple way to show static information such as text, images, or even HTML content.</p>
 <p>Example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">label</span> <span class="o">=</span> <span class="n">QLabel</span><span class="p">(</span><span class="s2">&quot;This is a simple text label&quot;</span><span class="p">)</span>
 <span class="c1"># You can also display an image</span>
 <span class="c1"># label.setPixmap(QPixmap(&quot;logo.png&quot;))</span>
 </pre></div>
 </div>
-<p><strong>Explanation:</strong>
-<cite>QLabel</cite> provides a simple way to show static information such as text, images, or even HTML content.</p>
 </section>
 <section id="qpushbutton">
 <h3>QPushButton<a class="headerlink" href="#qpushbutton" title="Link to this heading"></a></h3>
@@ -228,8 +222,7 @@ It can be used as a simple window or as a container for other widgets.</p>
 <span class="n">button</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">on_click</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><strong>Explanation:</strong>
-Here, the button emits a signal (<cite>clicked</cite>) which is connected to the <cite>on_click()</cite> function that performs an action when the button is pressed.</p>
+<p>In this example, the button emits a signal (<cite>clicked</cite>) which is connected to the <cite>on_click()</cite> function that performs an action when the button is pressed.</p>
 </section>
 <section id="qlineedit">
 <h3>QLineEdit<a class="headerlink" href="#qlineedit" title="Link to this heading"></a></h3>
@@ -251,13 +244,11 @@ It is often used for names, search bars, or any text input.</p>
 <span class="n">widget</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p><strong>Explanation:</strong>
-<cite>QLineEdit</cite> displays an editable text box.
-The <cite>setPlaceholderText()</cite> method shows a greyed-out hint until the user types something.</p>
+<p>The <cite>setPlaceholderText()</cite> method shows a greyed-out hint until the user types something.</p>
 </section>
 <section id="css-style">
 <h3>CSS style<a class="headerlink" href="#css-style" title="Link to this heading"></a></h3>
-<p>Most of the graphical objects in <em>PyQt6</em> can be customized by adding <strong>style sheets</strong> in <strong>CSS language</strong>.</p>
+<p>Most of the graphical objects in <em>PyQt6</em> can be customized by adding <strong>style sheets</strong> in <strong>CSS language</strong>. They use the same syntax as CSS in web design.</p>
 <p>Example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">button</span><span class="o">.</span><span class="n">setStyleSheet</span><span class="p">(</span><span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">    QPushButton {</span>
@@ -271,8 +262,6 @@ The <cite>setPlaceholderText()</cite> method shows a greyed-out hint until the u
 <span class="s2">&quot;&quot;&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><strong>Explanation:</strong>
-Style sheets allow you to personalize widgets easily. They use the same syntax as CSS in web design.</p>
 </section>
 </section>
 <section id="layouts-overview">
@@ -289,7 +278,7 @@ The most common layouts are:</p>
 <p>Each layout automatically manages spacing and resizing.</p>
 <section id="qhboxlayout">
 <h3>QHBoxLayout<a class="headerlink" href="#qhboxlayout" title="Link to this heading"></a></h3>
-<p>Places widgets next to each other in a <strong>horizontal line</strong>.</p>
+<p>Places widgets next to each other in a <strong>horizontal line</strong>. It aligns widgets from left to right, automatically adjusting their size if the window changes width.</p>
 <p>Example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">PyQt6.QtWidgets</span><span class="w"> </span><span class="kn">import</span> <span class="n">QApplication</span><span class="p">,</span> <span class="n">QWidget</span><span class="p">,</span> <span class="n">QPushButton</span><span class="p">,</span> <span class="n">QHBoxLayout</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
@@ -309,12 +298,10 @@ The most common layouts are:</p>
 <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">exec</span><span class="p">())</span>
 </pre></div>
 </div>
-<p><strong>Explanation:</strong>
-<cite>QHBoxLayout</cite> aligns widgets from left to right, automatically adjusting their size if the window changes width.</p>
 </section>
 <section id="qvboxlayout">
 <h3>QVBoxLayout<a class="headerlink" href="#qvboxlayout" title="Link to this heading"></a></h3>
-<p>Places widgets on top of each other in a <strong>vertical column</strong>.</p>
+<p>Places widgets on top of each other in a <strong>vertical column</strong>. This is useful for creating columns of buttons or text fields that resize gracefully.</p>
 <p>Example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">PyQt6.QtWidgets</span><span class="w"> </span><span class="kn">import</span> <span class="n">QApplication</span><span class="p">,</span> <span class="n">QWidget</span><span class="p">,</span> <span class="n">QPushButton</span><span class="p">,</span> <span class="n">QVBoxLayout</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
@@ -333,14 +320,11 @@ The most common layouts are:</p>
 <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">exec</span><span class="p">())</span>
 </pre></div>
 </div>
-<p><strong>Explanation:</strong>
-<cite>QVBoxLayout</cite> stacks widgets vertically.
-This is useful for creating columns of buttons or text fields that resize gracefully.</p>
 </section>
 <section id="qgridlayout">
 <h3>QGridLayout<a class="headerlink" href="#qgridlayout" title="Link to this heading"></a></h3>
 <p><cite>QGridLayout</cite> organizes widgets into a <strong>table</strong> with rows and columns.
-You can specify the exact position of each widget using coordinates <cite>(row, column)</cite>.</p>
+You can specify the exact position of each widget using coordinates <cite>(row, column)</cite>. This layout is especially useful for forms, control panels, or calculator interfaces.</p>
 <p>Example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">PyQt6.QtWidgets</span><span class="w"> </span><span class="kn">import</span> <span class="n">QApplication</span><span class="p">,</span> <span class="n">QWidget</span><span class="p">,</span> <span class="n">QPushButton</span><span class="p">,</span> <span class="n">QGridLayout</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
@@ -361,9 +345,6 @@ You can specify the exact position of each widget using coordinates <cite>(row, 
 <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">exec</span><span class="p">())</span>
 </pre></div>
 </div>
-<p><strong>Explanation:</strong>
-<cite>QGridLayout</cite> allows precise placement of widgets in a grid format.
-This layout is especially useful for forms, control panels, or calculator interfaces.</p>
 <p>—</p>
 </section>
 <section id="summary-of-layouts">
@@ -396,8 +377,7 @@ This is very common for building complex GUIs with flexible design.</p>
 <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="n">app</span><span class="o">.</span><span class="n">exec</span><span class="p">())</span>
 </pre></div>
 </div>
-<p><strong>Explanation:</strong>
-The <cite>clicked</cite> signal is emitted when the button is pressed.
+<p>The <cite>clicked</cite> signal is emitted when the button is pressed.
 The function <cite>say_hello()</cite> is the slot that is executed in response.</p>
 <p>—</p>
 <p>This simple structure forms the foundation of GUI programming in <strong>PyQt6</strong>:

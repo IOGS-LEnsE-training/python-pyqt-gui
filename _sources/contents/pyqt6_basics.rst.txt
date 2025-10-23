@@ -45,16 +45,16 @@ Example:
 
    sys.exit(app.exec())
 
-In this example, a simple window (`QWidget`) containing a label and a button arranged vertically using a `QVBoxLayout` is created.
+In this example, a simple window (`QWidget`) containing a label and a button arranged vertically using a `QVBoxLayout` is created. The button is clickable but nothing appends...
 
-.. image:: _static/images/pqt6_basics_first.png
+.. image:: ../_static/images/pqt6_basics_first.png
    :alt: First PyQt6 Graphical Interface
    :align: center
 
 
-
 Main container
 --------------
+
 QMainWindow
 ~~~~~~~~~~~
 
@@ -78,18 +78,17 @@ Example:
    window = MainWindow()
    window.show()
    sys.exit(app.exec())
-
-**Explanation:**  
+ 
 Here, the `QMainWindow` automatically provides a window frame. The `setCentralWidget()` method sets the main content inside it.
 
 
 Graphical container
 -------------------
+
 QWidget
 ~~~~~~~
 
-`QWidget` is the base class for all user interface objects in PyQt6.  
-It can be used as a simple window or as a container for other widgets.
+`QWidget` is the **base class** for all user interface objects in PyQt6. It is a flexible container that can hold other widgets and layouts. It’s often used as the main element of a simple window.
 
 Example:
 
@@ -103,9 +102,6 @@ Example:
    widget.setLayout(layout)
    widget.show()
 
-**Explanation:**  
-`QWidget` is a flexible container that can hold other widgets and layouts. It’s often used as the main element of a simple window.
-
 
 Graphical objects
 -----------------
@@ -113,7 +109,7 @@ Graphical objects
 QLabel
 ~~~~~~
 
-`QLabel` is used to display text or images in a window.
+`QLabel` is used to display text or images in a window. It provides a simple way to show static information such as text, images, or even HTML content.
 
 Example:
 
@@ -122,9 +118,6 @@ Example:
    label = QLabel("This is a simple text label")
    # You can also display an image
    # label.setPixmap(QPixmap("logo.png"))
-
-**Explanation:**  
-`QLabel` provides a simple way to show static information such as text, images, or even HTML content.
 
 
 QPushButton
@@ -145,8 +138,7 @@ Example:
 
    button.clicked.connect(on_click)
 
-**Explanation:**  
-Here, the button emits a signal (`clicked`) which is connected to the `on_click()` function that performs an action when the button is pressed.
+In this example, the button emits a signal (`clicked`) which is connected to the `on_click()` function that performs an action when the button is pressed.
 
 QLineEdit
 ~~~~~~~~~
@@ -171,14 +163,12 @@ Example:
    layout.addWidget(input_field)
    widget.setLayout(layout)
    widget.show()
-
-**Explanation:**  
-`QLineEdit` displays an editable text box.  
+ 
 The `setPlaceholderText()` method shows a greyed-out hint until the user types something.
 
 CSS style
 ~~~~~~~~~
-Most of the graphical objects in *PyQt6* can be customized by adding **style sheets** in **CSS language**.
+Most of the graphical objects in *PyQt6* can be customized by adding **style sheets** in **CSS language**. They use the same syntax as CSS in web design.
 
 Example:
 
@@ -195,8 +185,6 @@ Example:
        }
    """)
 
-**Explanation:**  
-Style sheets allow you to personalize widgets easily. They use the same syntax as CSS in web design.
 
 Layouts overview
 ----------------
@@ -217,7 +205,7 @@ Each layout automatically manages spacing and resizing.
 QHBoxLayout
 ~~~~~~~~~~~
 
-Places widgets next to each other in a **horizontal line**.
+Places widgets next to each other in a **horizontal line**. It aligns widgets from left to right, automatically adjusting their size if the window changes width.
 
 Example:
 
@@ -240,14 +228,11 @@ Example:
    window.show()
    sys.exit(app.exec())
 
-**Explanation:**  
-`QHBoxLayout` aligns widgets from left to right, automatically adjusting their size if the window changes width.
-
 
 QVBoxLayout
 ~~~~~~~~~~~
 
-Places widgets on top of each other in a **vertical column**.
+Places widgets on top of each other in a **vertical column**. This is useful for creating columns of buttons or text fields that resize gracefully.
 
 Example:
 
@@ -269,16 +254,12 @@ Example:
    window.show()
    sys.exit(app.exec())
 
-**Explanation:**  
-`QVBoxLayout` stacks widgets vertically.  
-This is useful for creating columns of buttons or text fields that resize gracefully.
-
 
 QGridLayout
 ~~~~~~~~~~~
 
 `QGridLayout` organizes widgets into a **table** with rows and columns.  
-You can specify the exact position of each widget using coordinates `(row, column)`.
+You can specify the exact position of each widget using coordinates `(row, column)`. This layout is especially useful for forms, control panels, or calculator interfaces.
 
 Example:
 
@@ -302,9 +283,6 @@ Example:
    window.show()
    sys.exit(app.exec())
 
-**Explanation:**  
-`QGridLayout` allows precise placement of widgets in a grid format.  
-This layout is especially useful for forms, control panels, or calculator interfaces.
 
 ---
 
@@ -356,7 +334,6 @@ Example:
 
    sys.exit(app.exec())
 
-**Explanation:**  
 The `clicked` signal is emitted when the button is pressed.  
 The function `say_hello()` is the slot that is executed in response.
 
